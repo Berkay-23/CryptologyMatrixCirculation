@@ -113,7 +113,7 @@ namespace CryptologyMatrixCirculation
                 List<byte> newBitList = new List<byte>();
                 int counter = 0;
                 x = 0;
-
+                
                 foreach (string positions in circulation)
                 {
                     int posX = Convert.ToInt32(positions.Substring(1, 1));

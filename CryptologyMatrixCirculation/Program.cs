@@ -19,9 +19,9 @@ namespace CryptologyMatrixCirculation
                 case "e":
                 AskForMetodsE:
                     Console.WriteLine("\n ------------------------------------ \n");
-                    List<List<string>> circulationListE = AskForMetods(circulations);
+                    List<string> circulationE = AskForMetods(circulations);
 
-                    if (circulationListE.Count != 1)
+                    if (circulationE == null)
                     {
                         Console.Write(" Wrong choice!");
                         Console.WriteLine("\n ------------------------------------ \n");
@@ -32,10 +32,8 @@ namespace CryptologyMatrixCirculation
                         Console.Write($"\n Write to Text: ");
                         string defaultText = Convert.ToString(Console.ReadLine());
 
-                        foreach (List<string> circulation in circulationListE)
-                        {
-                            encrypt.Run(defaultText, circulation);
-                        }
+                        encrypt.Run(defaultText, circulationE);
+
                         Console.WriteLine("\n ------------------------------------ ");
                         Console.WriteLine($"\n Encrypted Text: {encrypt.EncryptedText}");
                         Console.WriteLine("\n ------------------------------------ \n");
@@ -46,10 +44,14 @@ namespace CryptologyMatrixCirculation
                         switch (Console.ReadLine().ToLower())
                         {
                             case "d":
+                                encrypt.EncryptedBits = null;
+                                decrypt.DecryptedBits = null;
                                 goto AskForMetodsD;
 
                             case "m":
                                 Console.WriteLine("\n ------------------------------------ \n");
+                                encrypt.EncryptedBits = null;
+                                decrypt.DecryptedBits = null;
                                 goto AskForCryption;
 
                             case "q":
@@ -68,9 +70,10 @@ namespace CryptologyMatrixCirculation
                 case "d":
                 AskForMetodsD:
                     Console.WriteLine("\n ------------------------------------ \n");
-                    List<List<string>> circulationListD = AskForMetods(circulations);
+                    
+                    List<string> circulationD = AskForMetods(circulations);
 
-                    if (circulationListD.Count != 1)
+                    if (circulationD == null)
                     {
                         Console.Write(" Wrong choice!");
                         Console.WriteLine("\n ------------------------------------ \n");
@@ -81,10 +84,8 @@ namespace CryptologyMatrixCirculation
                         Console.Write($"\n Write to Encrypted Text: ");
                         string defaultText = Convert.ToString(Console.ReadLine());
 
-                        foreach (List<string> circulation in circulationListD)
-                        {
-                            decrypt.Run(defaultText, circulation);
-                        }
+                        decrypt.Run(defaultText, circulationD);
+
                         Console.WriteLine("\n ------------------------------------ ");
                         Console.Write($" Decrypted Text: {decrypt.DecryptedText}");
                         Console.WriteLine("\n ------------------------------------ \n");
@@ -95,10 +96,14 @@ namespace CryptologyMatrixCirculation
                         switch (Console.ReadLine().ToLower())
                         {
                             case "e":
+                                encrypt.EncryptedBits = null;
+                                decrypt.DecryptedBits = null;
                                 goto AskForMetodsE;
 
                             case "m":
                                 Console.WriteLine("\n ------------------------------------ \n");
+                                encrypt.EncryptedBits = null;
+                                decrypt.DecryptedBits = null;
                                 goto AskForCryption;
 
                             case "q":
@@ -126,29 +131,30 @@ namespace CryptologyMatrixCirculation
             Console.Read();
         }
 
-        private static List<List<string>> AskForMetods(Circulations circulations)
+        private static List<string> AskForMetods(Circulations circulations)
         {
+            AskForCirculation:
             Console.Write(" {0} \n {1} \n {2} \n {3}\n\n Select the cryption method: ", "Spiral (1)", "Symmetrical (2)", "Diyagonal (3)", "Quit (q)");
             string response = Console.ReadLine().ToLower();
 
             List<string> circulation = new List<string>();
-            List<List<string>> circulationList = new List<List<string>>();
+            //List<List<string>> circulationList = new List<List<string>>();
 
             switch (response)
             {
                 case "1":
                     circulation = circulations.circulation_1;
-                    circulationList.Add(circulation);
+                    //circulationList.Add(circulation);
                     break;
 
                 case "2":
                     circulation = circulations.circulation_2;
-                    circulationList.Add(circulation);
+                    //circulationList.Add(circulation);
                     break;
 
                 case "3":
                     circulation = circulations.circulation_3;
-                    circulationList.Add(circulation);
+                    //circulationList.Add(circulation);
                     break;
 
                 case "q":
@@ -157,18 +163,18 @@ namespace CryptologyMatrixCirculation
 
                 default:
 
-                    if (response.Contains("1"))
-                        circulationList.Add(circulations.circulation_1);
+                    //if (response.Contains("1"))
+                    //    circulationList.Add(circulations.circulation_1);
 
-                    if (response.Contains("2"))
-                        circulationList.Add(circulations.circulation_2);
+                    //if (response.Contains("2"))
+                    //    circulationList.Add(circulations.circulation_2);
 
-                    if (response.Contains("3"))
-                        circulationList.Add(circulations.circulation_3);
+                    //if (response.Contains("3"))
+                    //    circulationList.Add(circulations.circulation_3);
 
-                    break;
+                    goto AskForCirculation;
             }
-            return circulationList;
+            return circulation;
         }
     }
 }

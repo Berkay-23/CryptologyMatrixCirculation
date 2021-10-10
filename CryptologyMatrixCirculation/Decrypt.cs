@@ -11,7 +11,7 @@ namespace CryptologyMatrixCirculation
     {
         public string DecryptedText { get; set; }
         private List<List<List<byte>>> DecryptedBlocks { get; set; }
-        private string DecryptedBits { get; set; }
+        public string DecryptedBits { get; set; }
 
         public Decrypt()
         {
