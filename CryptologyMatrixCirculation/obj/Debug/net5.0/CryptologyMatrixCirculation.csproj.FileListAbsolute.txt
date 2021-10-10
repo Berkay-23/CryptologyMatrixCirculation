@@ -1,0 +1,16 @@
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\bin\Debug\net5.0\CryptologyMatrixCirculation.exe
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\bin\Debug\net5.0\CryptologyMatrixCirculation.deps.json
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\bin\Debug\net5.0\CryptologyMatrixCirculation.runtimeconfig.json
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\bin\Debug\net5.0\CryptologyMatrixCirculation.runtimeconfig.dev.json
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\bin\Debug\net5.0\CryptologyMatrixCirculation.dll
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\bin\Debug\net5.0\ref\CryptologyMatrixCirculation.dll
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\bin\Debug\net5.0\CryptologyMatrixCirculation.pdb
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\obj\Debug\net5.0\CryptologyMatrixCirculation.csproj.AssemblyReference.cache
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\obj\Debug\net5.0\CryptologyMatrixCirculation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\obj\Debug\net5.0\CryptologyMatrixCirculation.AssemblyInfoInputs.cache
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\obj\Debug\net5.0\CryptologyMatrixCirculation.AssemblyInfo.cs
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\obj\Debug\net5.0\CryptologyMatrixCirculation.csproj.CoreCompileInputs.cache
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\obj\Debug\net5.0\CryptologyMatrixCirculation.dll
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\obj\Debug\net5.0\ref\CryptologyMatrixCirculation.dll
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\obj\Debug\net5.0\CryptologyMatrixCirculation.pdb
+C:\Users\iredc\source\repos\CryptologyMatrixCirculation\CryptologyMatrixCirculation\obj\Debug\net5.0\CryptologyMatrixCirculation.genruntimeconfig.cache
