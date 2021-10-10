@@ -11,21 +11,19 @@ namespace CryptologyMatrixCirculation
     {
         public string DecryptedText { get; set; }
         private List<List<List<byte>>> DecryptedBlocks { get; set; }
-        private List<List<string>> UsedCirculations { get; set; }
         private string DecryptedBits { get; set; }
 
-        public Decrypt(List<List<string>> usedCirculations)
+        public Decrypt()
         {
             this.DecryptedBlocks = new List<List<List<byte>>>();
-            this.UsedCirculations = usedCirculations;
         }
 
-        public void Run(string encryptedText)
+        public void Run(string encryptedText, List<string> circilation)
         {
             string bits = DecryptText(encryptedText);
             List<List<List<byte>>> encryptedBlocks = MakeBlocks(bits);
 
-            DecryptBits(encryptedBlocks, UsedCirculations[0]);
+            DecryptBits(encryptedBlocks, circilation);
 
             DecryptedText = Encoding.UTF8.GetString(
                 Regex.Split(DecryptedBits.Replace(" ", string.Empty), "(.{8})")
@@ -33,8 +31,6 @@ namespace CryptologyMatrixCirculation
                 .Select(binary => Convert.ToByte(binary, 2))
                 .ToArray()
             );
-
-            Console.WriteLine($"\n DecryptedText = {DecryptedText}");
         }
 
         private List<List<List<byte>>> MakeBlocks(string encryptedBits)

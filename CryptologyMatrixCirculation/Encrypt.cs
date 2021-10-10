@@ -7,34 +7,29 @@ using System.Threading.Tasks;
 
 namespace CryptologyMatrixCirculation
 {
-    public class Encrypt:Circulations
+    public class Encrypt
     {
         public List<List<List<byte>>> EncryptedBlocks { get; set; }
-        public List<List<string>> UsedCirculations { get; set; }
         public string EncryptedBits { get; set; }
         public string EncryptedText { get; set; }
 
         public Encrypt()
         {
             this.EncryptedBlocks = new List<List<List<byte>>>();
-            this.UsedCirculations = new List<List<string>>();
         }
 
-        public void Run(string text)
+        public void Run(string text, List<string> circilation)
         {
             byte[] utf8_Bytes = Encoding.UTF8.GetBytes(text);
 
             List<List<byte>> bitsList = ToBitList(utf8_Bytes);
             List<List<List<byte>>> blocks = MakeBlock(bitsList);
 
-            List<List<List<byte>>> encryptedBlocks = MixTheBits(circulation_2, blocks);
-            UsedCirculations.Add(circulation_2);
+            List<List<List<byte>>> encryptedBlocks = MixTheBits(circilation, blocks);
 
             EncryptedBlocks = encryptedBlocks;
 
             EncryptedText = EncryptText(GetByteList());
-
-            Console.WriteLine($"\n EncryptedText = {EncryptedText}");
         }
 
         private List<List<byte>> ToBitList(byte[] bytes)

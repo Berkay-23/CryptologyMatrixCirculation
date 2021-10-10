@@ -7,47 +7,168 @@ namespace CryptologyMatrixCirculation
     {
         static void Main(string[] args)
         {
-            //Circulations circulations = new Circulations();
-
-            //Console.WriteLine("Select the encryption method or methods : \n {0} \n {1} \n {2} ", "1 (spiral)", "2 (symmetrical)", "3 (diyagonal)");
-            //string response = Console.ReadLine().ToLower();
-
-            //List<string> circulation = null;
-
-            //while (true)
-            //{
-
-            //    switch (response)
-            //    {
-            //        case "1":
-            //            circulation = circulations.circulation_1;
-            //            break;
-
-            //        case "2":
-            //            circulation = circulations.circulation_2;
-            //            break;
-
-            //        case "3":
-            //            circulation = circulations.circulation_3;
-            //            break;
-
-            //        default:
-            //            break;
-            //    }
-
-
-
-            //}
-            Console.Write(" Write the TEXT: ");
-            string defaultText = Convert.ToString(Console.ReadLine());
-
+            Circulations circulations = new Circulations();
             Encrypt encrypt = new Encrypt();
-            encrypt.Run(defaultText);
+            Decrypt decrypt = new Decrypt();
 
-            Decrypt decrypt = new Decrypt(encrypt.UsedCirculations);
-            decrypt.Run(encrypt.EncryptedText);
+        AskForCryption:
+            Console.Write(" {0}\n {1}\n {2}\n\n Select function: ", "Encryption (e)", "Decryption (d)", "Quit (q)");
 
+            switch (Console.ReadLine().ToLower().Trim())
+            {
+                case "e":
+                AskForMetodsE:
+                    Console.WriteLine("\n ------------------------------------ \n");
+                    List<List<string>> circulationListE = AskForMetods(circulations);
+
+                    if (circulationListE.Count != 1)
+                    {
+                        Console.Write(" Wrong choice!");
+                        Console.WriteLine("\n ------------------------------------ \n");
+                        goto AskForMetodsE;
+                    }
+                    else
+                    {
+                        Console.Write($"\n Write to Text: ");
+                        string defaultText = Convert.ToString(Console.ReadLine());
+
+                        foreach (List<string> circulation in circulationListE)
+                        {
+                            encrypt.Run(defaultText, circulation);
+                        }
+                        Console.WriteLine("\n ------------------------------------ ");
+                        Console.WriteLine($"\n Encrypted Text: {encrypt.EncryptedText}");
+                        Console.WriteLine("\n ------------------------------------ \n");
+
+                        AskForMenuE:
+                        Console.Write(" {0}\n {1}\n {2}\n\n Select: ", "Decrypt (d)", "Main Menu (m)", "Quit (q)");
+
+                        switch (Console.ReadLine().ToLower())
+                        {
+                            case "d":
+                                goto AskForMetodsD;
+
+                            case "m":
+                                Console.WriteLine("\n ------------------------------------ \n");
+                                goto AskForCryption;
+
+                            case "q":
+                                Environment.Exit(0);
+                                break;
+
+                            default:
+                                Console.Write("Wrong choice!");
+                                Console.WriteLine("\n ------------------------------------ \n");
+                                goto AskForMenuE;
+                        }
+                    }
+
+                    break;
+
+                case "d":
+                AskForMetodsD:
+                    Console.WriteLine("\n ------------------------------------ \n");
+                    List<List<string>> circulationListD = AskForMetods(circulations);
+
+                    if (circulationListD.Count != 1)
+                    {
+                        Console.Write(" Wrong choice!");
+                        Console.WriteLine("\n ------------------------------------ \n");
+                        goto AskForMetodsD;
+                    }
+                    else
+                    {
+                        Console.Write($"\n Write to Encrypted Text: ");
+                        string defaultText = Convert.ToString(Console.ReadLine());
+
+                        foreach (List<string> circulation in circulationListD)
+                        {
+                            decrypt.Run(defaultText, circulation);
+                        }
+                        Console.WriteLine("\n ------------------------------------ ");
+                        Console.Write($" Decrypted Text: {decrypt.DecryptedText}");
+                        Console.WriteLine("\n ------------------------------------ \n");
+
+                    AskForMenuD:
+                        Console.Write(" {0}\n {1}\n {2}\n\n Select: ", "Encrypt (e)", "Main Menu (m)", "Quit (q)");
+
+                        switch (Console.ReadLine().ToLower())
+                        {
+                            case "e":
+                                goto AskForMetodsE;
+
+                            case "m":
+                                Console.WriteLine("\n ------------------------------------ \n");
+                                goto AskForCryption;
+
+                            case "q":
+                                Environment.Exit(0);
+                                break;
+
+                            default:
+                                Console.Write("Wrong choice!");
+                                Console.WriteLine("\n ------------------------------------ \n");
+                                goto AskForMenuD;
+                        }
+                    }
+                    break;
+
+                case "q":
+                    Environment.Exit(0);
+                    break;
+
+                default:
+                    Console.Write(" Wrong choice!");
+                    Console.WriteLine("\n ------------------------------------ \n");
+                    goto AskForCryption;
+            }
+            
             Console.Read();
+        }
+
+        private static List<List<string>> AskForMetods(Circulations circulations)
+        {
+            Console.Write(" {0} \n {1} \n {2} \n {3}\n\n Select the cryption method: ", "Spiral (1)", "Symmetrical (2)", "Diyagonal (3)", "Quit (q)");
+            string response = Console.ReadLine().ToLower();
+
+            List<string> circulation = new List<string>();
+            List<List<string>> circulationList = new List<List<string>>();
+
+            switch (response)
+            {
+                case "1":
+                    circulation = circulations.circulation_1;
+                    circulationList.Add(circulation);
+                    break;
+
+                case "2":
+                    circulation = circulations.circulation_2;
+                    circulationList.Add(circulation);
+                    break;
+
+                case "3":
+                    circulation = circulations.circulation_3;
+                    circulationList.Add(circulation);
+                    break;
+
+                case "q":
+                    Environment.Exit(0);
+                    break;
+
+                default:
+
+                    if (response.Contains("1"))
+                        circulationList.Add(circulations.circulation_1);
+
+                    if (response.Contains("2"))
+                        circulationList.Add(circulations.circulation_2);
+
+                    if (response.Contains("3"))
+                        circulationList.Add(circulations.circulation_3);
+
+                    break;
+            }
+            return circulationList;
         }
     }
 }
